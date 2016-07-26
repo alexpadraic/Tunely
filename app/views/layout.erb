@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <!--
+    application.css is where you put your styles
+  -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-blue-grey.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <style>
+    html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
+  </style>
+  <link rel="icon" type="image/png" href="https://cdn1.iconfinder.com/data/icons/appicns/513/appicns_iTunes.png">
+  <title>Tunely</title>
+</head>
+  <body class="w3-theme-l5">
+
+    <!-- Navbar -->
+    <div class="w3-top">
+      <ul class="w3-navbar w3-theme-d2 w3-left-align w3-large">
+
+        <li class="w3-hide-medium w3-hide-large w3-opennav w3-right"><a class="w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a></li>
+
+        <li><a href="/" class="w3-padding-large w3-theme-d4"><img src="https://cdn1.iconfinder.com/data/icons/appicns/513/appicns_iTunes.png" class="w3-circle" style="height:25px;width:25px" alt="Logo"> Tunely</a></li>
+
+        <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a></li>
+
+        <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a></li>
+
+        <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a></li>
+
+        <li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-blue">3</span></a>
+          <div class="w3-dropdown-content w3-white w3-card-4">
+            <a href="#">One new friend request</a>
+            <a href="#">John Doe posted on your wall</a>
+            <a href="#">Jane likes your post</a>
+          </div>
+        </li>
+
+        <% if session[:user_id] %>
+          <li class="w3-hide-small w3-right"><a href="/users/<%= session[:user_id] %>" class="w3-padding-large w3-hover-white" title="My Account"><img src="img_avatar2.png" class="w3-circle" style="height:25px;width:25px" alt="Avatar"><%= current_user.name %></a></li>
+
+          <li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white" href="/sessions/delete">Logout</a></li>
+        <% else %>
+          <li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white" href="/sessions/new">Login</a></li>
+
+          <li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white" href="/users/new">Register</a></li>
+        <% end %>
+      </ul>
+    </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:51px">
+    <ul class="w3-navbar w3-left-align w3-large w3-theme">
+
+        <li><a class="w3-padding-large" href="#" title="News"><i class="fa fa-globe"></i> News</a></li>
+
+        <li><a class="w3-padding-large" href="#" title="Account Settings"><i class="fa fa-user"></i> Account Settings</a></li>
+
+        <li><a class="w3-padding-large" href="#" title="Messages"><i class="fa fa-envelope"></i> Messages</a></li>
+
+          <li class="w3-hide-small w3-dropdown-hover"><a href="#" class="w3-padding-large w3-hover-white" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-blue">3</span></a>
+          </li>
+
+        <% if session[:user_id] %>
+          <li><a class="w3-padding-large" href="/users/<%= session[:user_id] %>" title="My Account"><img src="img_avatar2.png" class="w3-circle" style="height:25px;width:25px" alt="Avatar"><%= current_user.name %></a></li>
+
+          <li><a class="w3-padding-large" href="/sessions/delete">Logout</a></li>
+        <% else %>
+          <li><a class="w3-padding-large" href="/sessions/new">Login</a></li>
+
+          <li><a class="w3-padding-large" href="/users/new">Register</a></li>
+        <% end %>
+    </ul>
+  </div>
+
+  <%= yield %>
+</body>
+</html>
