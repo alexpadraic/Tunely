@@ -54,11 +54,11 @@
         <% if session[:user_id] %>
           <li class="w3-hide-small w3-right"><a href="/users/<%= session[:user_id] %>" class="w3-padding-large w3-hover-white" title="My Account"><img src="img_avatar2.png" class="w3-circle" style="height:25px;width:25px" alt="Avatar"><%= current_user.name %></a></li>
 
-          <li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white" href="/sessions/delete">Logout</a></li>
+          <li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white" href="/sessions/delete" title="Logout">Logout</a></li>
         <% else %>
-          <li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white" href="/sessions/new">Login</a></li>
+          <li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white" href="/sessions/new" title="Login">Login</a></li>
 
-          <li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white" href="/users/new">Register</a></li>
+          <li class="w3-hide-small w3-right"><a class="w3-padding-large w3-hover-white" href="/users/new" title="Register">Register</a></li>
         <% end %>
       </ul>
     </div>
@@ -79,11 +79,11 @@
         <% if session[:user_id] %>
           <li><a class="w3-padding-large" href="/users/<%= session[:user_id] %>" title="My Account"><img src="img_avatar2.png" class="w3-circle" style="height:25px;width:25px" alt="Avatar"><%= current_user.name %></a></li>
 
-          <li><a class="w3-padding-large" href="/sessions/delete">Logout</a></li>
+          <li><a class="w3-padding-large" href="/sessions/delete" title="Logout">Logout</a></li>
         <% else %>
-          <li><a class="w3-padding-large" href="/sessions/new">Login</a></li>
+          <li><a class="w3-padding-large" href="/sessions/new" title="Login">Login</a></li>
 
-          <li><a class="w3-padding-large" href="/users/new">Register</a></li>
+          <li><a class="w3-padding-large" href="/users/new" title="Register">Register</a></li>
         <% end %>
     </ul>
   </div>
